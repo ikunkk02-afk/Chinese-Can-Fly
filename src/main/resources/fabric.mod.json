@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "chinese_can_fly",
+	"version": "${version}",
+	"name": "Chinese Can Fly",
+	"description": "Stage 1: Chinese chat messages are sent as toneless pinyin.",
+	"authors": [
+		"ikunkk02-afk"
+	],
+	"contact": {
+		"sources": "https://github.com/ikunkk02-afk/Chinese-Can-Fly"
+	},
+	"license": "MIT",
+	"icon": "assets/chinese_can_fly/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"io.github.ikunkk02afk.chinesecanfly.client.ChineseCanFlyClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": ">=0.116.15+1.21.1"
+	}
+}
