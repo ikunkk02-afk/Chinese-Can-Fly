@@ -1,6 +1,7 @@
 package io.github.ikunkk02afk.chinesecanfly.registry;
 
 import io.github.ikunkk02afk.chinesecanfly.ChineseCanFly;
+import io.github.ikunkk02afk.chinesecanfly.item.SuspiciousBookItem;
 import io.github.ikunkk02afk.chinesecanfly.rubbing.CharacterRubbingItem;
 import io.github.ikunkk02afk.chinesecanfly.rubbing.RubbingPaperItem;
 import net.minecraft.item.BlockItem;
@@ -26,6 +27,12 @@ public final class ModItems {
             Registries.ITEM,
             Identifier.of(ChineseCanFly.MOD_ID, "inscribed_rock"),
             new BlockItem(ModBlocks.INSCRIBED_ROCK, new Item.Settings())
+    );
+
+    public static final Item SUSPICIOUS_BOOK = Registry.register(
+            Registries.ITEM,
+            Identifier.of(ChineseCanFly.MOD_ID, "suspicious_book"),
+            new SuspiciousBookItem(new Item.Settings().maxCount(1))
     );
 
     private ModItems() {

@@ -4,8 +4,12 @@
   "item.chinese_can_fly.rubbing_paper": "Rubbing Paper",
   "item.chinese_can_fly.character_rubbing": "Character Rubbing",
   "item.chinese_can_fly.character_rubbing.with_character": "Character Rubbing · %s",
+  "item.chinese_can_fly.suspicious_book": "Suspicious Book",
   "tooltip.chinese_can_fly.character_rubbing.character": "Inscribed character: %s",
   "tooltip.chinese_can_fly.character_rubbing.origin": "Taken from an ancient rock inscription",
+  "tooltip.chinese_can_fly.suspicious_book.line_1": "The words on these pages seem to recognize you.",
+  "tooltip.chinese_can_fly.suspicious_book.line_2": "Do you still remember how to fly?",
+  "itemGroup.chinese_can_fly.main": "Chinese Can Fly",
   "actionbar.chinese_can_fly.rubbing.success": "Rubbing captured: %s",
   "actionbar.chinese_can_fly.rubbing.wrong_side": "The inscription must be rubbed from its front face",
   "actionbar.chinese_can_fly.rubbing.invalid_character": "This rock inscription cannot be rubbed"

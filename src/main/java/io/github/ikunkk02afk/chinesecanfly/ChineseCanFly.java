@@ -4,7 +4,9 @@ import io.github.ikunkk02afk.chinesecanfly.registry.ModBlockEntities;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModBlocks;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModDataComponents;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModFeatures;
+import io.github.ikunkk02afk.chinesecanfly.registry.ModItemGroups;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModItems;
+import io.github.ikunkk02afk.chinesecanfly.registry.ModRecipeSerializers;
 import io.github.ikunkk02afk.chinesecanfly.worldgen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
@@ -16,6 +18,8 @@ public final class ChineseCanFly implements ModInitializer {
         ModDataComponents.register();
         ModBlocks.register();
         ModItems.register();
+        ModRecipeSerializers.register();
+        ModItemGroups.register();
         ModBlockEntities.register();
         ModFeatures.register();
         ModWorldGeneration.register();

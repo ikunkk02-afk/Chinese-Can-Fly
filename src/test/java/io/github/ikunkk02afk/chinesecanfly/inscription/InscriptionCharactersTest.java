@@ -3,6 +3,8 @@ package io.github.ikunkk02afk.chinesecanfly.inscription;
 import net.minecraft.util.math.random.Random;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,5 +25,13 @@ class InscriptionCharactersTest {
     void acceptsTheDefaultCharacterOnlyWhenItIsInThePool() {
         assertTrue(InscriptionCharacters.isKnownCharacter(InscriptionCharacters.DEFAULT_CHARACTER));
         assertTrue(!InscriptionCharacters.isKnownCharacter("A"));
+    }
+
+    @Test
+    void exposesTheCompleteCharacterPoolInItsExistingOrder() {
+        assertEquals(48, InscriptionCharacters.allCharacters().size());
+        assertEquals("中", InscriptionCharacters.allCharacters().getFirst());
+        assertEquals("疾", InscriptionCharacters.allCharacters().getLast());
+        assertEquals(48, new HashSet<>(InscriptionCharacters.allCharacters()).size());
     }
 }

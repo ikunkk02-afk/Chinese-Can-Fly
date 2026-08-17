@@ -4,8 +4,12 @@
   "item.chinese_can_fly.rubbing_paper": "拓印纸",
   "item.chinese_can_fly.character_rubbing": "文字拓片",
   "item.chinese_can_fly.character_rubbing.with_character": "文字拓片 · %s",
+  "item.chinese_can_fly.suspicious_book": "可疑的书",
   "tooltip.chinese_can_fly.character_rubbing.character": "拓印文字：%s",
   "tooltip.chinese_can_fly.character_rubbing.origin": "从古代岩壁拓印而来",
+  "tooltip.chinese_can_fly.suspicious_book.line_1": "上面的文字似乎认识你。",
+  "tooltip.chinese_can_fly.suspicious_book.line_2": "你还记得自己会飞吗？",
+  "itemGroup.chinese_can_fly.main": "中国人能飞",
   "actionbar.chinese_can_fly.rubbing.success": "成功拓印「%s」",
   "actionbar.chinese_can_fly.rubbing.wrong_side": "必须从文字正面进行拓印",
   "actionbar.chinese_can_fly.rubbing.invalid_character": "岩壁文字无效，无法拓印"

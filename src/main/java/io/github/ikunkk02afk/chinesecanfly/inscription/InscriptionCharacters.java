@@ -2,6 +2,7 @@ package io.github.ikunkk02afk.chinesecanfly.inscription;
 
 import net.minecraft.util.math.random.Random;
 
+import java.util.List;
 import java.util.Set;
 
 public final class InscriptionCharacters {
@@ -14,6 +15,7 @@ public final class InscriptionCharacters {
             "宇", "宙", "洪", "荒", "乾", "坤", "星", "辰", "古", "今", "破", "疾"
     };
 
+    private static final List<String> ALL_CHARACTERS = List.of(CHARACTERS);
     private static final Set<String> CHARACTER_SET = Set.of(CHARACTERS);
 
     private InscriptionCharacters() {
@@ -25,6 +27,10 @@ public final class InscriptionCharacters {
 
     public static boolean isKnownCharacter(String character) {
         return CHARACTER_SET.contains(character);
+    }
+
+    public static List<String> allCharacters() {
+        return ALL_CHARACTERS;
     }
 
     public static int size() {
