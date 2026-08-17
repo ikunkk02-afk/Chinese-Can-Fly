@@ -28,7 +28,7 @@ public final class ModItemGroups {
             MAIN,
             FabricItemGroup.builder()
                     .displayName(Text.translatable("itemGroup.chinese_can_fly.main"))
-                    .icon(() -> new ItemStack(ModItems.SUSPICIOUS_BOOK))
+                    .icon(() -> new ItemStack(ModItems.CHINESE_DICTIONARY))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.INSCRIBED_ROCK);
                         entries.add(ModItems.RUBBING_PAPER);
@@ -38,6 +38,7 @@ public final class ModItemGroups {
                                         character
                                 )));
                         entries.add(ModItems.SUSPICIOUS_BOOK);
+                        entries.add(ModItems.CHINESE_DICTIONARY);
                     })
                     .build()
     );

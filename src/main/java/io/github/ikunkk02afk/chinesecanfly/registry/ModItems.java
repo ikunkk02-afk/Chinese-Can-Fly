@@ -1,6 +1,7 @@
 package io.github.ikunkk02afk.chinesecanfly.registry;
 
 import io.github.ikunkk02afk.chinesecanfly.ChineseCanFly;
+import io.github.ikunkk02afk.chinesecanfly.item.ChineseDictionaryItem;
 import io.github.ikunkk02afk.chinesecanfly.item.SuspiciousBookItem;
 import io.github.ikunkk02afk.chinesecanfly.rubbing.CharacterRubbingItem;
 import io.github.ikunkk02afk.chinesecanfly.rubbing.RubbingPaperItem;
@@ -33,6 +34,12 @@ public final class ModItems {
             Registries.ITEM,
             Identifier.of(ChineseCanFly.MOD_ID, "suspicious_book"),
             new SuspiciousBookItem(new Item.Settings().maxCount(1))
+    );
+
+    public static final Item CHINESE_DICTIONARY = Registry.register(
+            Registries.ITEM,
+            Identifier.of(ChineseCanFly.MOD_ID, "chinese_dictionary"),
+            new ChineseDictionaryItem(new Item.Settings().maxCount(1))
     );
 
     private ModItems() {

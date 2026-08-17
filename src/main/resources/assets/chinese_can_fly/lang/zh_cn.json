@@ -5,12 +5,17 @@
   "item.chinese_can_fly.character_rubbing": "文字拓片",
   "item.chinese_can_fly.character_rubbing.with_character": "文字拓片 · %s",
   "item.chinese_can_fly.suspicious_book": "可疑的书",
+  "item.chinese_can_fly.chinese_dictionary": "中华大字典",
   "tooltip.chinese_can_fly.character_rubbing.character": "拓印文字：%s",
   "tooltip.chinese_can_fly.character_rubbing.origin": "从古代岩壁拓印而来",
   "tooltip.chinese_can_fly.suspicious_book.line_1": "上面的文字似乎认识你。",
   "tooltip.chinese_can_fly.suspicious_book.line_2": "你还记得自己会飞吗？",
+  "tooltip.chinese_can_fly.suspicious_book.line_3": "需要15个书架与最高档附魔。",
+  "tooltip.chinese_can_fly.chinese_dictionary.line_1": "记载着失落的文字与某种无法解释的力量。",
+  "tooltip.chinese_can_fly.chinese_dictionary.line_2": "似乎只有真正读懂它，才能知道答案。",
   "itemGroup.chinese_can_fly.main": "中国人能飞",
   "actionbar.chinese_can_fly.rubbing.success": "成功拓印「%s」",
   "actionbar.chinese_can_fly.rubbing.wrong_side": "必须从文字正面进行拓印",
-  "actionbar.chinese_can_fly.rubbing.invalid_character": "岩壁文字无效，无法拓印"
+  "actionbar.chinese_can_fly.rubbing.invalid_character": "岩壁文字无效，无法拓印",
+  "actionbar.chinese_can_fly.enchanting.success": "可疑的书发生了变化……"
 }

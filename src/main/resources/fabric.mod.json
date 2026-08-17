@@ -3,7 +3,7 @@
 	"id": "chinese_can_fly",
 	"version": "${version}",
 	"name": "Chinese Can Fly",
-	"description": "Chinese chat messages are sent as toneless pinyin; ancient rock inscriptions can be rubbed into character rubbings.",
+	"description": "Chinese chat messages are sent as toneless pinyin; ancient inscriptions lead from rubbings to a suspicious book and the Grand Chinese Dictionary.",
 	"authors": [
 		"ikunkk02-afk"
 	],
@@ -21,6 +21,9 @@
 			"io.github.ikunkk02afk.chinesecanfly.client.ChineseCanFlyClient"
 		]
 	},
+	"mixins": [
+		"chinese_can_fly.mixins.json"
+	],
 	"depends": {
 		"fabricloader": ">=0.19.3",
 		"minecraft": "~1.21.1",

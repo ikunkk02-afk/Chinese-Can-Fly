@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "io.github.ikunkk02afk.chinesecanfly.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EnchantmentScreenHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
