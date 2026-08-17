@@ -3,7 +3,7 @@
 	"id": "chinese_can_fly",
 	"version": "${version}",
 	"name": "Chinese Can Fly",
-	"description": "Stage 1: Chinese chat messages are sent as toneless pinyin.",
+	"description": "Chinese chat messages are sent as toneless pinyin, and ancient Chinese rock inscriptions generate in the Overworld.",
 	"authors": [
 		"ikunkk02-afk"
 	],
@@ -12,8 +12,11 @@
 	},
 	"license": "MIT",
 	"icon": "assets/chinese_can_fly/icon.png",
-	"environment": "client",
+	"environment": "*",
 	"entrypoints": {
+		"main": [
+			"io.github.ikunkk02afk.chinesecanfly.ChineseCanFly"
+		],
 		"client": [
 			"io.github.ikunkk02afk.chinesecanfly.client.ChineseCanFlyClient"
 		]

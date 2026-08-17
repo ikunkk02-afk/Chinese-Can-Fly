@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "chinese_can_fly:block/inscribed_rock"
+    },
+    "facing=south": {
+      "model": "chinese_can_fly:block/inscribed_rock"
+    },
+    "facing=east": {
+      "model": "chinese_can_fly:block/inscribed_rock"
+    },
+    "facing=west": {
+      "model": "chinese_can_fly:block/inscribed_rock"
+    }
+  }
+}
