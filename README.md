@@ -1,6 +1,6 @@
 # Chinese Can Fly / 中国人能飞
 
-## 当前开发阶段：Stage 5
+## 当前开发阶段：Stage 6
 
 这是一个面向 **Minecraft 1.21.1、Fabric、Java 21** 的模组。当前版本实现了无声调拼音聊天、主世界古代岩壁文字、拓印系统、可疑的书和中华大字典。
 
@@ -44,15 +44,29 @@
 - 中华大字典拥有持续附魔光效，但目前不能阅读或提供能力；阅读与觉醒属于下一阶段。
 - “中国人能飞”创造模式分类页末尾加入中华大字典，并以其作为图标。
 
+## Stage 6 — 阅读与觉醒
+
+- 手持中华大字典连续按住右键 **10 秒（200 tick）** 阅读；松开、切换物品、丢弃字典、死亡或任何原版使用中断都会从零开始，且不会获得能力。
+- 阅读期间会显示 ActionBar 进度、轻微翻页声与逐渐增强的附魔、红色和金色粒子。已经觉醒的玩家再次右键会收到“你已经读懂这本字典了。”，不会重新进入阅读。
+- 成功后以服务器为权威一次性完成 `dictionaryRead`、`chineseUnlocked` 与 `powerUnlocked`，立即同步到客户端；汉字聊天恢复，中文、英文、数字和 Emoji 都保持原样。
+- 状态由 Cardinal Components API 保存，退出重进、服务器重启、死亡重生及换维度都不会丢失。
+- 觉醒会显示“**中国人能飞**”中央标题，产生红金粒子、真实 Unicode 汉字环绕升空效果，并对附近玩家同步可见的演出。
+- 觉醒后的生存/冒险模式玩家获得接近原版创造模式的基础飞行权限（双击空格），但不会改游戏模式、速度、碰撞、伤害或物品。
+- **Stage 7 才实现超级飞行**；本阶段没有高速、加速度、音爆、气流、水平飞行动画、穿墙或撞碎方块。
+
 ## 依赖
 
-运行时需要 Fabric Loader 和 Fabric API `0.116.15+1.21.1`。TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR，玩家无需单独下载。
+运行时需要 Fabric Loader、Fabric API `0.116.15+1.21.1`，以及 **Cardinal Components API `6.1.3`**。CCA 从 Stage 6 起是正式运行前置；安装适用于 Fabric 1.21.1 的 CCA 发布包，它必须提供实际使用的 `cardinal-components-base` 与 `cardinal-components-entity` 模块。缺少任一模块会由 `fabric.mod.json` 的依赖检查明确提示。
 
-Cardinal Components API、Cloth Config API、Mod Menu 和 Player Animator 已锁定兼容版本供后续开发使用，但 Stage 2 不使用它们，也不要求玩家安装。
+TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR，玩家无需单独下载。Cloth Config API、Mod Menu 和 Player Animator 仍仅是后续阶段的开发兼容依赖，并非 Stage 6 运行前置。
+
+## 开发/调试命令
+
+- `/chinesecanfly status`：所有玩家可查看自己的 `dictionaryRead`、`chineseUnlocked` 与 `powerUnlocked` 状态。
+- `/chinesecanfly resetawakening`：仅 OP（权限等级 2）可用；只重置执行者的 Stage 6 状态。生存/冒险模式同时撤销本模组提供的飞行权限；创造和旁观模式的原版飞行不会被修改。
 
 ## 后续开发计划
 
-- Stage 6 - 觉醒（阅读中华大字典并获得能力）
 - Stage 7 - 超级飞行
 - Stage 8 - 超级力量
 

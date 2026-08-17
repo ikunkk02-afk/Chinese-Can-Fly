@@ -19,6 +19,14 @@
 		],
 		"client": [
 			"io.github.ikunkk02afk.chinesecanfly.client.ChineseCanFlyClient"
+		],
+		"cardinal-components-entity": [
+			"io.github.ikunkk02afk.chinesecanfly.registry.ModComponents"
+		]
+	},
+	"custom": {
+		"cardinal-components": [
+			"chinese_can_fly:chinese_power"
 		]
 	},
 	"mixins": [
@@ -28,6 +36,8 @@
 		"fabricloader": ">=0.19.3",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
-		"fabric-api": ">=0.116.15+1.21.1"
+		"fabric-api": ">=0.116.15+1.21.1",
+		"cardinal-components-base": ">=6.1.3",
+		"cardinal-components-entity": ">=6.1.3"
 	}
 }

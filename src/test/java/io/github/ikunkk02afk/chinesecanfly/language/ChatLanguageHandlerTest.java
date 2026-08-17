@@ -15,6 +15,7 @@ class ChatLanguageHandlerTest {
     @Test
     void leavesChatUntouchedAfterChineseIsUnlocked() {
         assertEquals("中国人能飞", ChatLanguageHandler.transformOutgoingChat("中国人能飞", true));
+        assertEquals("Hello我会飞了123😂", ChatLanguageHandler.transformOutgoingChat("Hello我会飞了123😂", true));
     }
 
     @Test
