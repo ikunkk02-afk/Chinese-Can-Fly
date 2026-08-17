@@ -3,7 +3,7 @@
 	"id": "chinese_can_fly",
 	"version": "${version}",
 	"name": "Chinese Can Fly",
-	"description": "Chinese chat messages are sent as toneless pinyin, and ancient Chinese rock inscriptions generate in the Overworld.",
+	"description": "Chinese chat messages are sent as toneless pinyin; ancient rock inscriptions can be rubbed into character rubbings.",
 	"authors": [
 		"ikunkk02-afk"
 	],

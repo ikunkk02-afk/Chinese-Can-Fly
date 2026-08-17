@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "chinese_can_fly:item/rubbing_paper"
+  }
+}

@@ -1,8 +1,8 @@
 # Chinese Can Fly / 中国人能飞
 
-## 当前开发阶段：Stage 2
+## 当前开发阶段：Stage 3
 
-这是一个面向 **Minecraft 1.21.1、Fabric、Java 21** 的模组。当前版本实现了无声调拼音聊天和主世界古代岩壁文字。
+这是一个面向 **Minecraft 1.21.1、Fabric、Java 21** 的模组。当前版本实现了无声调拼音聊天、主世界古代岩壁文字和拓印系统。
 
 从 Stage 2 起，模组必须同时安装在客户端和服务器端：服务器负责注册方块及生成岩壁文字，客户端负责显示真实汉字。Dedicated Server 不会加载客户端渲染代码。
 
@@ -23,6 +23,13 @@
 - 候选字符池含 48 个汉字。每约 6 个主世界 Chunk 会尝试一次，实际成功率取决于是否找到合格岩壁。
 - 岩壁文字只会出现在**新生成的 Chunk**。已经探索过的 Chunk 不会 retro-generate。
 
+## Stage 3 — 拓印系统
+
+- `minecraft:paper` 与 `minecraft:ink_sac` 可无序合成 2 张 `chinese_can_fly:rubbing_paper`（拓印纸）。
+- 手持拓印纸右键古代岩壁文字的正面，可获得保存真实汉字的 `chinese_can_fly:character_rubbing`（文字拓片）。
+- 文字拓片使用 Minecraft 1.21.1 Data Component `chinese_can_fly:inscription_character` 保存汉字；同一汉字可堆叠，不同汉字不会堆叠。
+- 拓印不会消耗或改变岩壁文字；同一块岩壁可以重复拓印。
+
 ## 依赖
 
 运行时需要 Fabric Loader 和 Fabric API `0.116.15+1.21.1`。TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR，玩家无需单独下载。
@@ -31,7 +38,6 @@ Cardinal Components API、Cloth Config API、Mod Menu 和 Player Animator 已锁
 
 ## 后续开发计划
 
-- Stage 3 - 拓印系统
 - Stage 4 - 可疑的书
 - Stage 5 - 中华大字典
 - Stage 6 - 觉醒

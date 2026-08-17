@@ -1,4 +1,12 @@
 {
   "mod.chinese_can_fly.name": "Chinese Can Fly",
-  "block.chinese_can_fly.inscribed_rock": "Ancient Rock Inscription"
+  "block.chinese_can_fly.inscribed_rock": "Ancient Rock Inscription",
+  "item.chinese_can_fly.rubbing_paper": "Rubbing Paper",
+  "item.chinese_can_fly.character_rubbing": "Character Rubbing",
+  "item.chinese_can_fly.character_rubbing.with_character": "Character Rubbing · %s",
+  "tooltip.chinese_can_fly.character_rubbing.character": "Inscribed character: %s",
+  "tooltip.chinese_can_fly.character_rubbing.origin": "Taken from an ancient rock inscription",
+  "actionbar.chinese_can_fly.rubbing.success": "Rubbing captured: %s",
+  "actionbar.chinese_can_fly.rubbing.wrong_side": "The inscription must be rubbed from its front face",
+  "actionbar.chinese_can_fly.rubbing.invalid_character": "This rock inscription cannot be rubbed"
 }
