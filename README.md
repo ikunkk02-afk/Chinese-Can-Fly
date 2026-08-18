@@ -1,6 +1,6 @@
 # Chinese Can Fly / 中国人能飞
 
-## 当前开发阶段：Stage 6
+## 当前开发阶段：Stage 7
 
 这是一个面向 **Minecraft 1.21.1、Fabric、Java 21** 的模组。当前版本实现了无声调拼音聊天、主世界古代岩壁文字、拓印系统、可疑的书和中华大字典。
 
@@ -52,23 +52,35 @@
 - 状态由 Cardinal Components API 保存，退出重进、服务器重启、死亡重生及换维度都不会丢失。
 - 觉醒会显示“**中国人能飞**”中央标题，产生红金粒子、真实 Unicode 汉字环绕升空效果，并对附近玩家同步可见的演出。
 - 觉醒后的生存/冒险模式玩家获得接近原版创造模式的基础飞行权限（双击空格），但不会改游戏模式、速度、碰撞、伤害或物品。
-- **Stage 7 才实现超级飞行**；本阶段没有高速、加速度、音爆、气流、水平飞行动画、穿墙或撞碎方块。
+
+## Stage 7 — 超级飞行核心
+
+- 已觉醒玩家保留 Stage 6 的原版风格基础飞行（双击空格）；仅在基础飞行中按住原版 Sprint 和前进键才会进入超级飞行，地面疾跑保持 Vanilla 行为。
+- 超级飞行会沿视线方向平滑加速、惯性转向，并支持高速爬升和俯冲；默认最高速度为 `2.50 blocks/tick`（约 `50 blocks/second`）。
+- 第三人称会在 `super_fly` 与 `super_fly_fast` 超人飞行姿势之间平滑切换；附近玩家可以看到动画、气流和音爆。
+- 高速 FOV、白灰气流与少量红金 Dust 粒子均由客户端本地生成；首次越过音速阈值会在 80 格内播放一次音爆并生成扩散圆环。
+- 服务器验证全部启动条件、控制速度上限，并只在状态转换和音爆时发送自定义网络包，不会每 tick 同步速度或粒子。
+- 高速移动会预先检查扫掠路径中的已加载 Chunk 与方块碰撞。**当前高速撞墙会立即停止，暂时不能穿墙，也不会破坏任何方块。**
+- 水、岩浆、Elytra、骑乘、落地、死亡、退出、换维度与 `/chinesecanfly resetawakening` 都会清理瞬时超级飞行状态；它不会写入 CCA 或玩家 NBT。
 
 ## 依赖
 
-运行时需要 Fabric Loader、Fabric API `0.116.15+1.21.1`，以及 **Cardinal Components API `6.1.3`**。CCA 从 Stage 6 起是正式运行前置；安装适用于 Fabric 1.21.1 的 CCA 发布包，它必须提供实际使用的 `cardinal-components-base` 与 `cardinal-components-entity` 模块。缺少任一模块会由 `fabric.mod.json` 的依赖检查明确提示。
+运行时需要 Fabric Loader、Fabric API `0.116.15+1.21.1`、**Cardinal Components API `6.1.3`**，以及 **Player Animator `2.0.4+1.21.1`**（真实 Mod ID：`playeranimator`）。CCA 必须提供 `cardinal-components-base` 与 `cardinal-components-entity` 模块；缺少任一正式前置都会由 `fabric.mod.json` 的依赖检查明确提示。
 
-TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR，玩家无需单独下载。Cloth Config API、Mod Menu 和 Player Animator 仍仅是后续阶段的开发兼容依赖，并非 Stage 6 运行前置。
+TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR，玩家无需单独下载。Cloth Config API 和 Mod Menu 仍仅为开发兼容依赖，本阶段没有设置 GUI。
 
 ## 开发/调试命令
 
-- `/chinesecanfly status`：所有玩家可查看自己的 `dictionaryRead`、`chineseUnlocked` 与 `powerUnlocked` 状态。
-- `/chinesecanfly resetawakening`：仅 OP（权限等级 2）可用；只重置执行者的 Stage 6 状态。生存/冒险模式同时撤销本模组提供的飞行权限；创造和旁观模式的原版飞行不会被修改。
+- `/chinesecanfly status`：所有玩家可查看自己的 `dictionaryRead`、`chineseUnlocked`、`powerUnlocked` 与瞬时调试字段 `superFlightActive`。
+- `/chinesecanfly resetawakening`：仅 OP（权限等级 2）可用；重置执行者的觉醒状态并立即停止超级飞行。生存/冒险模式同时撤销本模组提供的飞行权限；创造和旁观模式的原版飞行不会被修改。
 
 ## 后续开发计划
 
-- Stage 7 - 超级飞行
-- Stage 8 - 超级力量
+- Stage 8 - 高速撞穿方块
+- Stage 9 - 超级力量
+- Stage 10 - 抓取与地面猛砸
+- Stage 11 - 冲击波
+- Stage 12 - 超级防御
 
 这些功能尚未实现。
 
@@ -77,7 +89,7 @@ TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR
 需要 Java 21：
 
 ```powershell
-$env:JAVA_HOME = 'C:\\Program Files\\Microsoft\\jdk-21.0.8.9-hotspot'
+$env:JAVA_HOME = 'D:\\chinese-can-fly-1.21.1\\.toolchains\\jdk-21.0.12+8'
 $env:Path = "$env:JAVA_HOME\\bin;$env:Path"
 .\\gradlew.bat clean build
 ```

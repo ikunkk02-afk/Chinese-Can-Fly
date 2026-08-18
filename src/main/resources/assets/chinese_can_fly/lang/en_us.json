@@ -21,6 +21,6 @@
   "actionbar.chinese_can_fly.chinese_dictionary.reading": "Reading the Grand Chinese Dictionary... %s%%",
   "actionbar.chinese_can_fly.chinese_dictionary.already_read": "You have already understood this dictionary.",
   "subtitle.chinese_can_fly.awakening": "The lost words have returned to your memory.",
-  "command.chinese_can_fly.status": "dictionaryRead = %s\\nchineseUnlocked = %s\\npowerUnlocked = %s",
+  "command.chinese_can_fly.status": "dictionaryRead = %s\\nchineseUnlocked = %s\\npowerUnlocked = %s\\nsuperFlightActive = %s",
   "command.chinese_can_fly.resetawakening.success": "Your dictionary awakening has been reset."
 }

@@ -1,9 +1,13 @@
 package io.github.ikunkk02afk.chinesecanfly;
 
 import io.github.ikunkk02afk.chinesecanfly.ability.PlayerFlightAbilityManager;
+import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightManager;
 import io.github.ikunkk02afk.chinesecanfly.awakening.AwakeningEffectController;
 import io.github.ikunkk02afk.chinesecanfly.command.ChinesePowerCommands;
 import io.github.ikunkk02afk.chinesecanfly.network.AwakeningEffectPayload;
+import io.github.ikunkk02afk.chinesecanfly.network.SonicBoomPayload;
+import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightIntentPayload;
+import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightStatePayload;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModBlockEntities;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModBlocks;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModDataComponents;
@@ -21,6 +25,9 @@ public final class ChineseCanFly implements ModInitializer {
     @Override
     public void onInitialize() {
         PayloadTypeRegistry.playS2C().register(AwakeningEffectPayload.ID, AwakeningEffectPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(SuperFlightIntentPayload.ID, SuperFlightIntentPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(SuperFlightStatePayload.ID, SuperFlightStatePayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(SonicBoomPayload.ID, SonicBoomPayload.CODEC);
         ModDataComponents.register();
         ModBlocks.register();
         ModItems.register();
@@ -30,6 +37,7 @@ public final class ChineseCanFly implements ModInitializer {
         ModFeatures.register();
         ModWorldGeneration.register();
         PlayerFlightAbilityManager.register();
+        SuperFlightManager.register();
         AwakeningEffectController.register();
         ChinesePowerCommands.register();
     }

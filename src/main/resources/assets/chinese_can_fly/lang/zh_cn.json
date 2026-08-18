@@ -21,6 +21,6 @@
   "actionbar.chinese_can_fly.chinese_dictionary.reading": "正在阅读中华大字典…… %s%%",
   "actionbar.chinese_can_fly.chinese_dictionary.already_read": "你已经读懂这本字典了。",
   "subtitle.chinese_can_fly.awakening": "失落的文字重新回到了你的记忆中。",
-  "command.chinese_can_fly.status": "dictionaryRead = %s\\nchineseUnlocked = %s\\npowerUnlocked = %s",
+  "command.chinese_can_fly.status": "dictionaryRead = %s\\nchineseUnlocked = %s\\npowerUnlocked = %s\\nsuperFlightActive = %s",
   "command.chinese_can_fly.resetawakening.success": "你的字典觉醒状态已重置。"
 }

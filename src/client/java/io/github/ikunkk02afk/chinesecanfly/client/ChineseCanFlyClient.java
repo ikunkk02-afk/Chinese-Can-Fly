@@ -5,6 +5,7 @@ import io.github.ikunkk02afk.chinesecanfly.client.effect.AwakeningGlyphRenderer;
 import io.github.ikunkk02afk.chinesecanfly.language.ChatLanguageHandler;
 import io.github.ikunkk02afk.chinesecanfly.language.ChineseLanguageAccess;
 import io.github.ikunkk02afk.chinesecanfly.client.render.InscribedRockBlockEntityRenderer;
+import io.github.ikunkk02afk.chinesecanfly.client.superflight.SuperFlightClientController;
 import io.github.ikunkk02afk.chinesecanfly.network.AwakeningEffectPayload;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModBlockEntities;
 import net.fabricmc.api.ClientModInitializer;
@@ -25,5 +26,6 @@ public final class ChineseCanFlyClient implements ClientModInitializer {
         ClientPlayNetworking.registerGlobalReceiver(AwakeningEffectPayload.ID,
                 (payload, context) -> AwakeningGlyphEffect.trigger(payload.playerId()));
         AwakeningGlyphRenderer.register();
+        SuperFlightClientController.register();
     }
 }

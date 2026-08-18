@@ -30,7 +30,11 @@
 		]
 	},
 	"mixins": [
-		"chinese_can_fly.mixins.json"
+		"chinese_can_fly.mixins.json",
+		{
+			"config": "chinese_can_fly.client.mixins.json",
+			"environment": "client"
+		}
 	],
 	"depends": {
 		"fabricloader": ">=0.19.3",
@@ -38,6 +42,7 @@
 		"java": ">=21",
 		"fabric-api": ">=0.116.15+1.21.1",
 		"cardinal-components-base": ">=6.1.3",
-		"cardinal-components-entity": ">=6.1.3"
+		"cardinal-components-entity": ">=6.1.3",
+		"playeranimator": ">=2.0.4+1.21.1"
 	}
 }

@@ -3,6 +3,7 @@ package io.github.ikunkk02afk.chinesecanfly.command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.ikunkk02afk.chinesecanfly.ability.PlayerFlightAbilityManager;
+import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightManager;
 import io.github.ikunkk02afk.chinesecanfly.component.ChinesePowerComponent;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModComponents;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -31,7 +32,8 @@ public final class ChinesePowerCommands {
         ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
         ChinesePowerComponent component = ModComponents.CHINESE_POWER.get(player);
         context.getSource().sendFeedback(() -> Text.translatable("command.chinese_can_fly.status",
-                component.hasReadDictionary(), component.canUseChinese(), component.hasChinesePower()), false);
+                component.hasReadDictionary(), component.canUseChinese(), component.hasChinesePower(),
+                SuperFlightManager.isActive(player)), false);
         return 1;
     }
 
@@ -39,6 +41,7 @@ public final class ChinesePowerCommands {
         ServerPlayerEntity player = context.getSource().getPlayerOrThrow();
         ChinesePowerComponent component = ModComponents.CHINESE_POWER.get(player);
         boolean hadChinesePower = component.hasChinesePower();
+        SuperFlightManager.stopNow(player);
         component.resetAwakening();
         PlayerFlightAbilityManager.revokeForReset(player, hadChinesePower);
         ModComponents.CHINESE_POWER.sync(player);
