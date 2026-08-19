@@ -13,6 +13,7 @@ public final class CombatDamageTypes {
     public static final RegistryKey<DamageType> SUPER_FLIGHT_IMPACT = key("super_flight_impact");
     public static final RegistryKey<DamageType> THROWN_IMPACT = key("thrown_impact");
     public static final RegistryKey<DamageType> GROUND_SLAM = key("ground_slam");
+    public static final RegistryKey<DamageType> HELD_ENTITY_IMPACT = key("held_entity_impact");
 
     private CombatDamageTypes() {
     }

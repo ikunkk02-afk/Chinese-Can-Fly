@@ -7,11 +7,12 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 
 /** Server-side protection and hardness rules for super-flight tunnelling. */
-final class SuperFlightBlockRules {
+/** Server-side protection and hardness rules shared by the player and held-entity impact probes. */
+public final class SuperFlightBlockRules {
     private SuperFlightBlockRules() {
     }
 
-    static boolean canBreak(ServerWorld world, BlockPos pos, BlockState state, double speed) {
+    public static boolean canBreak(ServerWorld world, BlockPos pos, BlockState state, double speed) {
         if (state.isAir() || state.isIn(ModBlockTags.SUPER_FLIGHT_IMMUNE) || world.getBlockEntity(pos) != null) {
             return false;
         }

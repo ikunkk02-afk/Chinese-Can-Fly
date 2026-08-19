@@ -20,6 +20,8 @@ public final class SuperFlightTuning {
     public static final double SONIC_RADIUS = 80.0;
 
     public static final double MIN_TUNNEL_SPEED = 0.90;
+    /** A dive must be visibly downward before a transient on-ground state can keep tunnelling alive. */
+    public static final double MIN_DOWNWARD_TUNNEL_DIRECTION = 0.15;
     public static final double TUNNEL_SAMPLE_STEP = 0.25;
     public static final double TUNNEL_HORIZONTAL_MARGIN = 0.65;
     public static final double TUNNEL_VERTICAL_MARGIN = 0.35;

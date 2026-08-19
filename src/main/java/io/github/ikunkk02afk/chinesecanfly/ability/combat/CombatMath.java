@@ -39,6 +39,17 @@ public final class CombatMath {
         );
     }
 
+    public static float heldImpactDamage(double speed, boolean hardBlocker) {
+        if (!Double.isFinite(speed) || speed < 0.0) {
+            return (float) CombatTuning.HELD_IMPACT_MIN_DAMAGE;
+        }
+        double damage = CombatTuning.HELD_IMPACT_DAMAGE_BASE + speed * CombatTuning.HELD_IMPACT_DAMAGE_PER_SPEED;
+        if (hardBlocker) {
+            damage *= CombatTuning.HELD_IMPACT_HARD_BLOCKER_MULTIPLIER;
+        }
+        return (float) Math.clamp(damage, CombatTuning.HELD_IMPACT_MIN_DAMAGE, CombatTuning.HELD_IMPACT_MAX_DAMAGE);
+    }
+
     public static double clampedSlamDistance(double distance) {
         return !Double.isFinite(distance) ? 0.0 : Math.clamp(distance, 0.0, CombatTuning.MAX_SLAM_DISTANCE);
     }

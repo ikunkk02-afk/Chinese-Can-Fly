@@ -10,10 +10,13 @@ import net.minecraft.util.Uuids;
 
 import java.util.UUID;
 
-public record HeldEntityStatePayload(UUID playerId, boolean holding) implements CustomPayload {
+/** Syncs the exact holder-target relationship so every client can render the original entity as a hand proxy. */
+public record HeldEntityStatePayload(UUID holderId, UUID targetId, int targetEntityId, boolean holding) implements CustomPayload {
     public static final Id<HeldEntityStatePayload> ID = new Id<>(Identifier.of(ChineseCanFly.MOD_ID, "held_entity_state"));
     public static final PacketCodec<RegistryByteBuf, HeldEntityStatePayload> CODEC = PacketCodec.tuple(
-            Uuids.PACKET_CODEC, HeldEntityStatePayload::playerId,
+            Uuids.PACKET_CODEC, HeldEntityStatePayload::holderId,
+            Uuids.PACKET_CODEC, HeldEntityStatePayload::targetId,
+            PacketCodecs.VAR_INT, HeldEntityStatePayload::targetEntityId,
             PacketCodecs.BOOL, HeldEntityStatePayload::holding,
             HeldEntityStatePayload::new
     );

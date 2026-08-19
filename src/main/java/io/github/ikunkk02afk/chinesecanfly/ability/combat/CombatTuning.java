@@ -18,6 +18,14 @@ public final class CombatTuning {
     public static final int MAX_RAM_TARGETS_PER_TICK = 12;
     public static final int RAM_QUEUE_TTL_TICKS = 2;
 
+    public static final double HELD_IMPACT_DAMAGE_BASE = 10.0;
+    public static final double HELD_IMPACT_DAMAGE_PER_SPEED = 12.0;
+    public static final double HELD_IMPACT_MIN_DAMAGE = 12.0;
+    public static final double HELD_IMPACT_MAX_DAMAGE = 45.0;
+    public static final double HELD_IMPACT_HARD_BLOCKER_MULTIPLIER = 1.20;
+    public static final int HELD_IMPACT_COOLDOWN_TICKS = 9;
+    public static final double HELD_IMPACT_SAMPLE_STEP = 0.20;
+
     public static final double GRAB_RANGE = 6.0;
     public static final double HOLD_DISTANCE = 1.6;
     public static final double SUPER_FLIGHT_HOLD_DISTANCE = 1.3;

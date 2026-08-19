@@ -1,6 +1,7 @@
 package io.github.ikunkk02afk.chinesecanfly.client.superflight;
 
 import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightMotion;
+import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightEligibility;
 import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightTuning;
 import io.github.ikunkk02afk.chinesecanfly.network.SonicBoomPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightIntentPayload;
@@ -52,7 +53,7 @@ public final class SuperFlightClientController {
             return;
         }
 
-        boolean inputActive = canRequest(localPlayer, client);
+        boolean inputActive = canContinueRequest(localPlayer, client);
         if (inputActive != lastSentIntent) {
             ClientPlayNetworking.send(new SuperFlightIntentPayload(inputActive));
             lastSentIntent = inputActive;
@@ -68,19 +69,24 @@ public final class SuperFlightClientController {
         tickVisuals(client, localPlayer);
     }
 
-    private static boolean canRequest(ClientPlayerEntity player, MinecraftClient client) {
-        return ModComponents.CHINESE_POWER.get(player).hasChinesePower()
-                && player.isAlive()
-                && !player.isSpectator()
-                && !player.hasVehicle()
-                && !player.isFallFlying()
-                && !player.isTouchingWater()
-                && !player.isInLava()
-                && !player.isOnGround()
-                && player.getAbilities().allowFlying
-                && player.getAbilities().flying
-                && client.options.sprintKey.isPressed()
-                && client.options.forwardKey.isPressed();
+    private static boolean canContinueRequest(ClientPlayerEntity player, MinecraftClient client) {
+        boolean requested = client.options.sprintKey.isPressed() && client.options.forwardKey.isPressed();
+        if (!requested) {
+            return false;
+        }
+        SuperFlightEligibility.Conditions conditions = new SuperFlightEligibility.Conditions(
+                ModComponents.CHINESE_POWER.get(player).hasChinesePower(),
+                player.isAlive(),
+                player.isSpectator(),
+                player.hasVehicle(),
+                player.isFallFlying(),
+                player.isTouchingWater(),
+                player.isInLava(),
+                player.isOnGround(),
+                player.getAbilities().allowFlying,
+                player.getAbilities().flying
+        );
+        return SuperFlightEligibility.canContinueRequest(conditions, predictionActive, predictedSpeed, predictedDirection);
     }
 
     private static void tickPrediction(ClientPlayerEntity player, boolean inputActive) {

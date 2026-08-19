@@ -1,5 +1,6 @@
 package io.github.ikunkk02afk.chinesecanfly.ability.superflight;
 
+import io.github.ikunkk02afk.chinesecanfly.ability.combat.HeldEntityImpactManager;
 import io.github.ikunkk02afk.chinesecanfly.ability.combat.SuperFlightEntityImpactManager;
 import io.github.ikunkk02afk.chinesecanfly.network.SonicBoomPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightIntentPayload;
@@ -51,6 +52,7 @@ public final class SuperFlightManager {
             broadcastState(player, false, false);
         }
         SuperFlightEntityImpactManager.clear(player);
+        HeldEntityImpactManager.clear(player);
     }
 
     private static void handleIntent(ServerPlayerEntity player, boolean active) {
@@ -92,10 +94,11 @@ public final class SuperFlightManager {
     }
 
     private static void tickPlayer(ServerPlayerEntity player, SuperFlightState state, Set<UUID> expired) {
-        if (!canContinue(player)) {
+        if (!canContinue(player, state)) {
             player.setVelocity(Vec3d.ZERO);
             expired.add(player.getUuid());
             broadcastState(player, false, false);
+            HeldEntityImpactManager.clear(player);
             return;
         }
         state.tickTunnelSoundCooldown();
@@ -111,11 +114,13 @@ public final class SuperFlightManager {
             player.setVelocity(state.direction().multiply(SuperFlightTuning.EXIT_SPEED));
             expired.add(player.getUuid());
             broadcastState(player, false, false);
+            HeldEntityImpactManager.clear(player);
             return;
         }
 
         state.setDirection(SuperFlightMotion.steer(state.direction(), player.getRotationVector(), nextSpeed));
         Vec3d velocity = state.direction().multiply(nextSpeed);
+        HeldEntityImpactManager.process(player, velocity, nextSpeed);
         SuperFlightPathResult initialPath = SuperFlightCollisionProbe.probe(player, velocity, nextSpeed);
         if (initialPath.isClear()) {
             movePlayer(player, state, velocity, nextSpeed, previousSpeed);
@@ -197,6 +202,7 @@ public final class SuperFlightManager {
         player.setVelocity(Vec3d.ZERO);
         expired.add(player.getUuid());
         broadcastState(player, false, false);
+        HeldEntityImpactManager.clear(player);
     }
 
     private static void stopForCollision(ServerPlayerEntity player, SuperFlightState state, Set<UUID> expired,
@@ -212,14 +218,15 @@ public final class SuperFlightManager {
         player.fallDistance = 0.0F;
         expired.add(player.getUuid());
         broadcastState(player, false, false);
+        HeldEntityImpactManager.clear(player);
     }
 
     private static boolean canStart(ServerPlayerEntity player) {
         return SuperFlightEligibility.canStart(conditionsFor(player));
     }
 
-    private static boolean canContinue(ServerPlayerEntity player) {
-        return SuperFlightEligibility.canStart(conditionsFor(player));
+    private static boolean canContinue(ServerPlayerEntity player, SuperFlightState state) {
+        return SuperFlightEligibility.canContinue(conditionsFor(player), state.requested(), state.speed(), state.direction());
     }
 
     private static SuperFlightEligibility.Conditions conditionsFor(ServerPlayerEntity player) {

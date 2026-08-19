@@ -1,0 +1,6 @@
+{
+  "message_id": "held_entity_impact",
+  "scaling": "never",
+  "exhaustion": 0.1,
+  "effects": "hurt"
+}

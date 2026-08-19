@@ -82,7 +82,7 @@ public final class HeldEntityManager {
         }
         if (isHolding(player)) {
             if (payload.safeRelease()) {
-                release(player, true);
+                safeReleaseHeld(player);
             } else {
                 throwHeld(player);
             }
@@ -99,11 +99,11 @@ public final class HeldEntityManager {
             return;
         }
 
-        HeldEntityState state = new HeldEntityState(player.getUuid(), target.getUuid(), target.hasNoGravity());
+        HeldEntityState state = new HeldEntityState(player.getUuid(), target.getUuid(), target.getId(), target.hasNoGravity());
         HELD_BY_HOLDER.put(player.getUuid(), state);
         HOLDER_BY_TARGET.put(target.getUuid(), player.getUuid());
         positionHeldEntity(player, target);
-        broadcastHolding(player, true);
+        broadcastHolding(player, state, true);
         CombatAnimationManager.broadcast(player, CombatAnimation.GRAB);
     }
 
@@ -113,6 +113,7 @@ public final class HeldEntityManager {
             release(player, true);
             return;
         }
+        positionHeldEntity(player, target);
         release(player, false);
         Vec3d velocity = player.getRotationVector().normalize().multiply(CombatTuning.THROW_SPEED)
                 .add(0.0, CombatTuning.THROW_VERTICAL_SPEED, 0.0);
@@ -120,6 +121,15 @@ public final class HeldEntityManager {
         target.fallDistance = 0.0F;
         ThrownEntityManager.track(target, player, velocity);
         CombatAnimationManager.broadcast(player, CombatAnimation.THROW);
+    }
+
+    private static void safeReleaseHeld(ServerPlayerEntity player) {
+        LivingEntity target = getHeldEntity(player);
+        if (target != null) {
+            // Match the authority position to the current hand-side pose before the normal renderer returns.
+            positionHeldEntity(player, target);
+        }
+        release(player, true);
     }
 
     private static void tick(MinecraftServer server) {
@@ -197,12 +207,14 @@ public final class HeldEntityManager {
         }
         ServerPlayerEntity player = server.getPlayerManager().getPlayer(holderId);
         if (player != null) {
-            broadcastHolding(player, false);
+            broadcastHolding(player, state, false);
         }
     }
 
-    private static void broadcastHolding(ServerPlayerEntity player, boolean holding) {
-        HeldEntityStatePayload payload = new HeldEntityStatePayload(player.getUuid(), holding);
+    private static void broadcastHolding(ServerPlayerEntity player, HeldEntityState state, boolean holding) {
+        HeldEntityStatePayload payload = new HeldEntityStatePayload(
+                player.getUuid(), state.targetId(), state.targetEntityId(), holding
+        );
         Set<ServerPlayerEntity> recipients = new HashSet<>(PlayerLookup.tracking(player));
         recipients.add(player);
         for (ServerPlayerEntity recipient : recipients) {
@@ -214,7 +226,12 @@ public final class HeldEntityManager {
         for (UUID holderId : HELD_BY_HOLDER.keySet()) {
             ServerPlayerEntity holder = recipient.getServer().getPlayerManager().getPlayer(holderId);
             if (holder != null && holder.getWorld() == recipient.getWorld()) {
-                ServerPlayNetworking.send(recipient, new HeldEntityStatePayload(holderId, true));
+                HeldEntityState state = HELD_BY_HOLDER.get(holderId);
+                if (state != null) {
+                    ServerPlayNetworking.send(recipient, new HeldEntityStatePayload(
+                            holderId, state.targetId(), state.targetEntityId(), true
+                    ));
+                }
             }
         }
     }

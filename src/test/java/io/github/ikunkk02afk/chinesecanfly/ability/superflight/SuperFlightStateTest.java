@@ -27,6 +27,23 @@ class SuperFlightStateTest {
     }
 
     @Test
+    void continuationAllowsOnlyAHighSpeedDiveToSurviveTransientGroundContact() {
+        SuperFlightEligibility.Conditions grounded = new SuperFlightEligibility.Conditions(
+                true, true, false, false, false, false, false, true, true, true
+        );
+
+        assertFalse(SuperFlightEligibility.canStart(grounded));
+        assertTrue(SuperFlightEligibility.canContinue(grounded, true,
+                SuperFlightTuning.MIN_TUNNEL_SPEED, new Vec3d(0.0, -0.16, 0.0)));
+        assertFalse(SuperFlightEligibility.canContinue(grounded, true,
+                SuperFlightTuning.MIN_TUNNEL_SPEED, new Vec3d(0.0, -0.15, 0.0)));
+        assertFalse(SuperFlightEligibility.canContinue(grounded, false,
+                SuperFlightTuning.MAX_SPEED, new Vec3d(0.0, -1.0, 0.0)));
+        assertFalse(SuperFlightEligibility.canContinue(grounded, true,
+                SuperFlightTuning.MIN_TUNNEL_SPEED - 0.01, new Vec3d(0.0, -1.0, 0.0)));
+    }
+
+    @Test
     void sonicBoomOnlyFiresOnThresholdCrossingAndRearmsAfterSustainedSlowFlight() {
         SuperFlightState state = new SuperFlightState(new Vec3d(0.0, 0.0, 1.0));
         state.setSpeed(1.46);

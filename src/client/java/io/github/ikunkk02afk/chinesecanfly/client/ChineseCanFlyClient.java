@@ -3,6 +3,7 @@ package io.github.ikunkk02afk.chinesecanfly.client;
 import io.github.ikunkk02afk.chinesecanfly.client.effect.AwakeningGlyphEffect;
 import io.github.ikunkk02afk.chinesecanfly.client.effect.AwakeningGlyphRenderer;
 import io.github.ikunkk02afk.chinesecanfly.client.combat.ChineseCombatClientController;
+import io.github.ikunkk02afk.chinesecanfly.client.combat.HeldEntityFeatureRenderer;
 import io.github.ikunkk02afk.chinesecanfly.language.ChatLanguageHandler;
 import io.github.ikunkk02afk.chinesecanfly.language.ChineseLanguageAccess;
 import io.github.ikunkk02afk.chinesecanfly.client.render.InscribedRockBlockEntityRenderer;
@@ -29,5 +30,6 @@ public final class ChineseCanFlyClient implements ClientModInitializer {
         AwakeningGlyphRenderer.register();
         SuperFlightClientController.register();
         ChineseCombatClientController.register();
+        HeldEntityFeatureRenderer.register();
     }
 }

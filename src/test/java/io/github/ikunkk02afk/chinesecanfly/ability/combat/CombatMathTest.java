@@ -36,4 +36,12 @@ class CombatMathTest {
         assertEquals(4.0, CombatMath.slamCraterRadius(100.0), EPSILON);
         assertEquals(3, CombatMath.slamCraterDepth(100.0));
     }
+
+    @Test
+    void heldImpactUsesItsOwnBoundedDamageCurve() {
+        assertEquals(22.0, CombatMath.heldImpactDamage(1.0, false), EPSILON);
+        assertEquals(34.0, CombatMath.heldImpactDamage(2.0, false), EPSILON);
+        assertEquals(40.8, CombatMath.heldImpactDamage(2.0, true), EPSILON);
+        assertEquals(45.0, CombatMath.heldImpactDamage(100.0, true), EPSILON);
+    }
 }

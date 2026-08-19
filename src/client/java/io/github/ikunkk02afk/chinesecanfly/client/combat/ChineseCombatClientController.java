@@ -48,12 +48,15 @@ public final class ChineseCombatClientController {
                 (payload, context) -> context.client().execute(() ->
                         ChineseCombatAnimationController.play(payload.playerId(), payload.animation())));
         ClientPlayNetworking.registerGlobalReceiver(HeldEntityStatePayload.ID,
-                (payload, context) -> context.client().execute(() ->
-                        ChineseCombatAnimationController.setHolding(payload.playerId(), payload.holding())));
+                (payload, context) -> context.client().execute(() -> {
+                    HeldEntityVisualManager.applyState(payload);
+                    ChineseCombatAnimationController.setHolding(payload.holderId(), payload.holding());
+                }));
         ClientPlayNetworking.registerGlobalReceiver(GroundSlamStatePayload.ID,
                 (payload, context) -> context.client().execute(() -> applyGroundSlam(context.client(), payload)));
         ClientTickEvents.END_CLIENT_TICK.register(ChineseCombatClientController::tick);
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> clear());
+        HeldEntityVisualManager.register();
     }
 
     private static void tick(MinecraftClient client) {
@@ -102,5 +105,6 @@ public final class ChineseCombatClientController {
     private static void clear() {
         localSlamPrediction = false;
         ChineseCombatAnimationController.clear();
+        HeldEntityVisualManager.clear();
     }
 }
