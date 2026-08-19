@@ -10,6 +10,8 @@ final class SuperFlightState {
     private boolean fast;
     private boolean sonicTriggered;
     private int sonicRearmTicks;
+    private int tunnelStallTicks;
+    private int tunnelSoundCooldown;
 
     SuperFlightState(Vec3d direction) {
         this.direction = direction.normalize();
@@ -66,5 +68,32 @@ final class SuperFlightState {
             sonicRearmTicks = 0;
         }
         return false;
+    }
+
+    boolean recordTunnelProgress(boolean progressed) {
+        if (progressed) {
+            tunnelStallTicks = 0;
+            return false;
+        }
+        tunnelStallTicks++;
+        return tunnelStallTicks >= SuperFlightTuning.MAX_TUNNEL_STALL_TICKS;
+    }
+
+    void clearTunnelStall() {
+        tunnelStallTicks = 0;
+    }
+
+    boolean consumeTunnelSound() {
+        if (tunnelSoundCooldown > 0) {
+            return false;
+        }
+        tunnelSoundCooldown = SuperFlightTuning.TUNNEL_SOUND_COOLDOWN_TICKS;
+        return true;
+    }
+
+    void tickTunnelSoundCooldown() {
+        if (tunnelSoundCooldown > 0) {
+            tunnelSoundCooldown--;
+        }
     }
 }

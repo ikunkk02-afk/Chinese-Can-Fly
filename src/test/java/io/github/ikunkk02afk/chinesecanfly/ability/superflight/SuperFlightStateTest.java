@@ -53,4 +53,16 @@ class SuperFlightStateTest {
         assertTrue(state.updateFast());
         assertTrue(state.fast());
     }
+
+    @Test
+    void tunnellingStopsAfterThreeConsecutiveTicksWithoutProgress() {
+        SuperFlightState state = new SuperFlightState(new Vec3d(1.0, 0.0, 0.0));
+
+        assertFalse(state.recordTunnelProgress(false));
+        assertFalse(state.recordTunnelProgress(false));
+        assertTrue(state.recordTunnelProgress(false));
+
+        state.recordTunnelProgress(true);
+        assertFalse(state.recordTunnelProgress(false));
+    }
 }

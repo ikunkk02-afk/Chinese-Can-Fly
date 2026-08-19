@@ -39,4 +39,15 @@ class SuperFlightMotionTest {
         assertEquals(2.875, SuperFlightTuning.MAX_SERVER_SPEED, EPSILON);
         assertTrue(SuperFlightTuning.MAX_SERVER_SPEED < 3.0);
     }
+
+    @Test
+    void tunnellingHardnessAndResistanceStayWithinTheirConfiguredBounds() {
+        assertEquals(4.55, SuperFlightTuning.maximumBreakableHardness(SuperFlightTuning.MIN_TUNNEL_SPEED), EPSILON);
+        assertEquals(11.75, SuperFlightTuning.maximumBreakableHardness(SuperFlightTuning.MAX_SPEED), EPSILON);
+        assertEquals(SuperFlightTuning.ABSOLUTE_MAX_BREAK_HARDNESS,
+                SuperFlightTuning.maximumBreakableHardness(10.0), EPSILON);
+        assertEquals(0.004, SuperFlightTuning.tunnelSpeedLoss(2.0), EPSILON);
+        assertEquals(SuperFlightTuning.MAX_TUNNEL_SPEED_LOSS_PER_TICK,
+                SuperFlightTuning.tunnelSpeedLoss(1000.0), EPSILON);
+    }
 }
