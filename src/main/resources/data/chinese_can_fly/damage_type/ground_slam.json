@@ -1,0 +1,6 @@
+{
+  "message_id": "ground_slam",
+  "scaling": "never",
+  "exhaustion": 0.1,
+  "effects": "hurt"
+}

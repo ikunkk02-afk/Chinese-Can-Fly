@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "name": "throw_entity",
+  "emote": {
+    "endTick": 10,
+    "stopTick": 11,
+    "isLoop": false,
+    "returnTick": 10,
+    "degrees": true,
+    "moves": [
+      { "tick": 0, "easing": "outquad", "body": { "pitch": -4.0 }, "leftArm": { "pitch": -68.0, "roll": -20.0 }, "rightArm": { "pitch": -68.0, "roll": 20.0 } },
+      { "tick": 3, "easing": "outquart", "body": { "pitch": 8.0 }, "leftArm": { "pitch": -128.0, "roll": -8.0 }, "rightArm": { "pitch": -128.0, "roll": 8.0 } },
+      { "tick": 10, "easing": "inoutquad", "body": { "pitch": 0.0 }, "leftArm": { "pitch": 0.0, "roll": 0.0 }, "rightArm": { "pitch": 0.0, "roll": 0.0 } }
+    ]
+  }
+}

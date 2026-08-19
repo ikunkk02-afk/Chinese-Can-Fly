@@ -98,7 +98,8 @@ public final class SuperFlightEntityImpactManager {
                 && living != player
                 && living.isAlive()
                 && !living.isRemoved()
-                && !living.isSpectator();
+                && !living.isSpectator()
+                && !HeldEntityManager.isHeldBy(player, living);
     }
 
     private static double projection(Vec3d origin, Vec3d direction, Vec3d point) {

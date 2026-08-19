@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "name": "ground_slam",
+  "emote": {
+    "endTick": 20,
+    "stopTick": 21,
+    "isLoop": true,
+    "returnTick": 0,
+    "degrees": true,
+    "moves": [
+      { "tick": 0, "easing": "inoutsine", "body": { "pitch": 38.0 }, "head": { "pitch": -12.0 }, "leftArm": { "pitch": -86.0, "roll": -22.0 }, "rightArm": { "pitch": -86.0, "roll": 22.0 } },
+      { "tick": 10, "easing": "inoutsine", "body": { "pitch": 44.0 }, "head": { "pitch": -15.0 }, "leftArm": { "pitch": -92.0, "roll": -25.0 }, "rightArm": { "pitch": -92.0, "roll": 25.0 } },
+      { "tick": 20, "easing": "inoutsine", "body": { "pitch": 38.0 }, "head": { "pitch": -12.0 }, "leftArm": { "pitch": -86.0, "roll": -22.0 }, "rightArm": { "pitch": -86.0, "roll": 22.0 } }
+    ]
+  }
+}

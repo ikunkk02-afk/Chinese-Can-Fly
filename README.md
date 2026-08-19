@@ -1,6 +1,6 @@
 # Chinese Can Fly / 中国人能飞
 
-## 当前开发阶段：Stage 8
+## 当前开发阶段：Stage 10
 
 这是一个面向 **Minecraft 1.21.1、Fabric、Java 21** 的模组。当前版本实现了无声调拼音聊天、主世界古代岩壁文字、拓印系统、可疑的书和中华大字典。
 
@@ -73,6 +73,21 @@
 - `#chinese_can_fly:super_flight_immune` 是可由数据包扩展的保护 Tag；Obsidian、Bedrock、Portal、命令方块等默认不可撞穿。
 - 撞穿时服务器生成少量与实际方块匹配的碎片和限频破坏声；撞上不可破坏方块时会有重击反馈，并安全退出超级飞行但保留基础飞行。
 
+## Stage 9 — 超级力量
+
+- 已觉醒玩家的直接原版近战伤害提高约 5 倍；空手攻击的原始伤害最低为 20，仍会正确经过护甲、附魔、盾牌和原版无敌帧。
+- Bow、Crossbow、箭矢、三叉戟投射物、火焰和特殊能力伤害不会被近战倍率影响。
+- 有效命中会产生有限的强击退、空气爆裂粒子、原版重击声与 `super_punch` Player Animator 动画。
+- 超级飞行达到高速时会以 Swept AABB 命中路径上的生物，伤害随飞行速度提高；同一目标有 10 tick 冷却，每 tick 最多处理 12 个目标，不影响 Stage 8 穿山。
+
+## Stage 10 — 抓取与地面猛砸
+
+- 已觉醒玩家可按 **G** 抓取 6 格内的 LivingEntity；再按 G 投掷，Shift+G 安全放下。玩家和 `#chinese_can_fly:grab_immune` 中的实体不可抓取。
+- 被抓取实体是原实体：服务器持续更新位置、保留并恢复其原本 noGravity，支持步行、基础飞行和超级飞行携带，不使用 Riding 或实体替换。
+- 投掷目标会在撞击固体方块时受到一次独立的 Throw Impact 伤害；状态最长追踪 70 tick。
+- 空中持有目标时可按 **X** 启动 Ground Slam。服务器以扫掠碰撞阻止穿地，命中时对主目标造成高度相关伤害、击飞附近生物，并生成有限的小型无掉落碗状坑。
+- Ground Slam 不破坏 BlockEntity、古代岩壁或 `#chinese_can_fly:super_flight_immune` 中的方块；水、岩浆、死亡、登出、换维度、超时及重置觉醒都会安全释放目标并清理状态。
+
 ## 依赖
 
 运行时需要 Fabric Loader、Fabric API `0.116.15+1.21.1`、**Cardinal Components API `6.1.3`**，以及 **Player Animator `2.0.4+1.21.1`**（真实 Mod ID：`playeranimator`）。CCA 必须提供 `cardinal-components-base` 与 `cardinal-components-entity` 模块；缺少任一正式前置都会由 `fabric.mod.json` 的依赖检查明确提示。
@@ -81,18 +96,13 @@ TinyPinyin `2.0.3.RELEASE` 及其 Aho-Corasick `0.4.0` 依赖已嵌入模组 JAR
 
 ## 开发/调试命令
 
-- `/chinesecanfly status`：所有玩家可查看自己的 `dictionaryRead`、`chineseUnlocked`、`powerUnlocked` 与瞬时调试字段 `superFlightActive`。
-- `/chinesecanfly resetawakening`：仅 OP（权限等级 2）可用；重置执行者的觉醒状态并立即停止超级飞行。生存/冒险模式同时撤销本模组提供的飞行权限；创造和旁观模式的原版飞行不会被修改。
+- `/chinesecanfly status`：所有玩家可查看自己的 `dictionaryRead`、`chineseUnlocked`、`powerUnlocked` 与瞬时调试字段 `superFlightActive`、`holdingEntity`、`groundSlamActive`。
+- `/chinesecanfly resetawakening`：仅 OP（权限等级 2）可用；重置执行者的觉醒状态，并立即停止超级飞行、释放持有目标、取消投掷/猛砸和战斗动画。生存/冒险模式同时撤销本模组提供的飞行权限；创造和旁观模式的原版飞行不会被修改。
 
 ## 后续开发计划
 
-- Stage 8 - 高速撞穿方块
-- Stage 9 - 超级力量
-- Stage 10 - 抓取与地面猛砸
-- Stage 11 - 冲击波
+- Stage 11 - 正面冲击波
 - Stage 12 - 超级防御
-
-Stage 9 及之后的功能尚未实现。
 
 ## 构建
 

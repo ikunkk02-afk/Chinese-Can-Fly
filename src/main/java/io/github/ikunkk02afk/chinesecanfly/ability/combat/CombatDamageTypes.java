@@ -11,6 +11,8 @@ import net.minecraft.util.Identifier;
 /** Registry keys and source factories for combat damage which must not count as normal melee. */
 public final class CombatDamageTypes {
     public static final RegistryKey<DamageType> SUPER_FLIGHT_IMPACT = key("super_flight_impact");
+    public static final RegistryKey<DamageType> THROWN_IMPACT = key("thrown_impact");
+    public static final RegistryKey<DamageType> GROUND_SLAM = key("ground_slam");
 
     private CombatDamageTypes() {
     }

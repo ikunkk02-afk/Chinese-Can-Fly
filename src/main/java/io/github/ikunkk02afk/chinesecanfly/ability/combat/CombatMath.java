@@ -27,4 +27,33 @@ public final class CombatMath {
                 CombatTuning.RAM_MAX_DAMAGE
         );
     }
+
+    public static float thrownImpactDamage(double speed) {
+        if (!Double.isFinite(speed) || speed < 0.0) {
+            return (float) CombatTuning.THROW_MIN_DAMAGE;
+        }
+        return (float) Math.clamp(
+                CombatTuning.THROW_DAMAGE_BASE + speed * CombatTuning.THROW_DAMAGE_PER_SPEED,
+                CombatTuning.THROW_MIN_DAMAGE,
+                CombatTuning.THROW_MAX_DAMAGE
+        );
+    }
+
+    public static double clampedSlamDistance(double distance) {
+        return !Double.isFinite(distance) ? 0.0 : Math.clamp(distance, 0.0, CombatTuning.MAX_SLAM_DISTANCE);
+    }
+
+    public static float slamPrimaryDamage(double distance) {
+        double safeDistance = Math.min(clampedSlamDistance(distance), CombatTuning.SLAM_PRIMARY_DISTANCE_CAP);
+        return (float) (CombatTuning.SLAM_PRIMARY_BASE_DAMAGE
+                + safeDistance * CombatTuning.SLAM_PRIMARY_DAMAGE_PER_BLOCK);
+    }
+
+    public static double slamCraterRadius(double distance) {
+        return Math.min(CombatTuning.SLAM_MAX_RADIUS, 2.0 + Math.min(clampedSlamDistance(distance), 60.0) / 30.0);
+    }
+
+    public static int slamCraterDepth(double distance) {
+        return Math.clamp(1 + (int) Math.floor(Math.min(clampedSlamDistance(distance), 60.0) / 30.0), 1, 3);
+    }
 }

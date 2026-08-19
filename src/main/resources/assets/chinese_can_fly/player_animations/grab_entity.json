@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "name": "grab_entity",
+  "emote": {
+    "endTick": 10,
+    "stopTick": 11,
+    "isLoop": false,
+    "returnTick": 10,
+    "degrees": true,
+    "moves": [
+      { "tick": 0, "easing": "outquad", "body": { "pitch": -5.0 }, "leftArm": { "pitch": -35.0, "roll": -12.0 }, "rightArm": { "pitch": -35.0, "roll": 12.0 } },
+      { "tick": 4, "easing": "outquart", "body": { "pitch": -10.0 }, "leftArm": { "pitch": -102.0, "roll": -18.0 }, "rightArm": { "pitch": -102.0, "roll": 18.0 } },
+      { "tick": 10, "easing": "inoutquad", "body": { "pitch": 0.0 }, "leftArm": { "pitch": 0.0, "roll": 0.0 }, "rightArm": { "pitch": 0.0, "roll": 0.0 } }
+    ]
+  }
+}

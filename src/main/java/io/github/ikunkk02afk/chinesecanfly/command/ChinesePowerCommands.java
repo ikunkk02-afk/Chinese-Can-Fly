@@ -3,6 +3,9 @@ package io.github.ikunkk02afk.chinesecanfly.command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.ikunkk02afk.chinesecanfly.ability.PlayerFlightAbilityManager;
+import io.github.ikunkk02afk.chinesecanfly.ability.combat.ChineseCombatManager;
+import io.github.ikunkk02afk.chinesecanfly.ability.combat.GroundSlamManager;
+import io.github.ikunkk02afk.chinesecanfly.ability.combat.HeldEntityManager;
 import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightManager;
 import io.github.ikunkk02afk.chinesecanfly.component.ChinesePowerComponent;
 import io.github.ikunkk02afk.chinesecanfly.registry.ModComponents;
@@ -33,7 +36,7 @@ public final class ChinesePowerCommands {
         ChinesePowerComponent component = ModComponents.CHINESE_POWER.get(player);
         context.getSource().sendFeedback(() -> Text.translatable("command.chinese_can_fly.status",
                 component.hasReadDictionary(), component.canUseChinese(), component.hasChinesePower(),
-                SuperFlightManager.isActive(player)), false);
+                SuperFlightManager.isActive(player), HeldEntityManager.isHolding(player), GroundSlamManager.isActive(player)), false);
         return 1;
     }
 
@@ -42,6 +45,7 @@ public final class ChinesePowerCommands {
         ChinesePowerComponent component = ModComponents.CHINESE_POWER.get(player);
         boolean hadChinesePower = component.hasChinesePower();
         SuperFlightManager.stopNow(player);
+        ChineseCombatManager.clearForReset(player);
         component.resetAwakening();
         PlayerFlightAbilityManager.revokeForReset(player, hadChinesePower);
         ModComponents.CHINESE_POWER.sync(player);
