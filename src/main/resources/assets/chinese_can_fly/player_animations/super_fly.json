@@ -15,8 +15,8 @@
         "head": { "pitch": 14.0 },
         "leftArm": { "pitch": 38.0, "roll": -18.0 },
         "rightArm": { "pitch": 38.0, "roll": 18.0 },
-        "leftLeg": { "pitch": -24.0 },
-        "rightLeg": { "pitch": -24.0 }
+        "leftLeg": { "pitch": -68.0 },
+        "rightLeg": { "pitch": -68.0 }
       },
       {
         "tick": 10,
@@ -25,8 +25,8 @@
         "head": { "pitch": 10.0 },
         "leftArm": { "pitch": 42.0, "roll": -22.0 },
         "rightArm": { "pitch": 42.0, "roll": 22.0 },
-        "leftLeg": { "pitch": -28.0 },
-        "rightLeg": { "pitch": -28.0 }
+        "leftLeg": { "pitch": -72.0 },
+        "rightLeg": { "pitch": -72.0 }
       },
       {
         "tick": 20,
@@ -35,8 +35,8 @@
         "head": { "pitch": 14.0 },
         "leftArm": { "pitch": 38.0, "roll": -18.0 },
         "rightArm": { "pitch": 38.0, "roll": 18.0 },
-        "leftLeg": { "pitch": -24.0 },
-        "rightLeg": { "pitch": -24.0 }
+        "leftLeg": { "pitch": -68.0 },
+        "rightLeg": { "pitch": -68.0 }
       }
     ]
   }
