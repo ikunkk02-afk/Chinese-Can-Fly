@@ -1,5 +1,6 @@
 package io.github.ikunkk02afk.chinesecanfly.ability.superflight;
 
+import io.github.ikunkk02afk.chinesecanfly.ability.combat.SuperFlightEntityImpactManager;
 import io.github.ikunkk02afk.chinesecanfly.network.SonicBoomPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightIntentPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightStatePayload;
@@ -49,6 +50,7 @@ public final class SuperFlightManager {
             player.setVelocity(Vec3d.ZERO);
             broadcastState(player, false, false);
         }
+        SuperFlightEntityImpactManager.clear(player);
     }
 
     private static void handleIntent(ServerPlayerEntity player, boolean active) {
@@ -179,6 +181,7 @@ public final class SuperFlightManager {
 
     private static void movePlayer(ServerPlayerEntity player, SuperFlightState state, Vec3d velocity,
                                    double speed, double previousSpeed) {
+        SuperFlightEntityImpactManager.process(player, velocity, speed);
         state.setSpeed(speed);
         player.setVelocity(velocity);
         player.fallDistance = 0.0F;

@@ -3,7 +3,8 @@
   "package": "io.github.ikunkk02afk.chinesecanfly.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "EnchantmentScreenHandlerMixin"
+    "EnchantmentScreenHandlerMixin",
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,41 @@
+{
+  "version": 3,
+  "name": "super_punch",
+  "emote": {
+    "endTick": 10,
+    "stopTick": 11,
+    "isLoop": false,
+    "returnTick": 10,
+    "degrees": true,
+    "moves": [
+      {
+        "tick": 0,
+        "easing": "outquad",
+        "body": { "yaw": -8.0, "roll": -3.0 },
+        "rightArm": { "pitch": 35.0, "yaw": -16.0, "roll": 10.0 },
+        "leftArm": { "pitch": 10.0, "roll": -5.0 }
+      },
+      {
+        "tick": 3,
+        "easing": "outquart",
+        "body": { "yaw": 12.0, "roll": 4.0 },
+        "rightArm": { "pitch": -118.0, "yaw": 5.0, "roll": 2.0 },
+        "leftArm": { "pitch": 20.0, "roll": -8.0 }
+      },
+      {
+        "tick": 7,
+        "easing": "inoutquad",
+        "body": { "yaw": 4.0, "roll": 1.0 },
+        "rightArm": { "pitch": -36.0, "yaw": 0.0, "roll": 0.0 },
+        "leftArm": { "pitch": 5.0, "roll": 0.0 }
+      },
+      {
+        "tick": 10,
+        "easing": "inoutquad",
+        "body": { "yaw": 0.0, "roll": 0.0 },
+        "rightArm": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0 },
+        "leftArm": { "pitch": 0.0, "roll": 0.0 }
+      }
+    ]
+  }
+}

@@ -5,6 +5,7 @@ import io.github.ikunkk02afk.chinesecanfly.ability.superflight.SuperFlightManage
 import io.github.ikunkk02afk.chinesecanfly.awakening.AwakeningEffectController;
 import io.github.ikunkk02afk.chinesecanfly.command.ChinesePowerCommands;
 import io.github.ikunkk02afk.chinesecanfly.network.AwakeningEffectPayload;
+import io.github.ikunkk02afk.chinesecanfly.network.CombatAnimationPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SonicBoomPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightIntentPayload;
 import io.github.ikunkk02afk.chinesecanfly.network.SuperFlightStatePayload;
@@ -25,6 +26,7 @@ public final class ChineseCanFly implements ModInitializer {
     @Override
     public void onInitialize() {
         PayloadTypeRegistry.playS2C().register(AwakeningEffectPayload.ID, AwakeningEffectPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(CombatAnimationPayload.ID, CombatAnimationPayload.CODEC);
         PayloadTypeRegistry.playC2S().register(SuperFlightIntentPayload.ID, SuperFlightIntentPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(SuperFlightStatePayload.ID, SuperFlightStatePayload.CODEC);
         PayloadTypeRegistry.playS2C().register(SonicBoomPayload.ID, SonicBoomPayload.CODEC);
