@@ -13,7 +13,7 @@
         "easing": "inoutcubic",
         "body": { "pitch": -82.0 },
         "head": { "pitch": 8.0 },
-        "leftArm": { "pitch": 100.0, "roll": -10.0 },
+        "leftArm": { "pitch": 170.0, "roll": -10.0 },
         "rightArm": { "pitch": -18.0, "roll": 18.0 },
         "leftLeg": { "pitch": 0.0 },
         "rightLeg": { "pitch": 0.0 }
@@ -23,7 +23,7 @@
         "easing": "inoutsine",
         "body": { "pitch": -86.0 },
         "head": { "pitch": 5.0 },
-        "leftArm": { "pitch": 106.0, "roll": -14.0 },
+        "leftArm": { "pitch": 174.0, "roll": -14.0 },
         "rightArm": { "pitch": -14.0, "roll": 22.0 },
         "leftLeg": { "pitch": 0.0 },
         "rightLeg": { "pitch": 0.0 }
@@ -33,7 +33,7 @@
         "easing": "inoutsine",
         "body": { "pitch": -82.0 },
         "head": { "pitch": 8.0 },
-        "leftArm": { "pitch": 100.0, "roll": -10.0 },
+        "leftArm": { "pitch": 170.0, "roll": -10.0 },
         "rightArm": { "pitch": -18.0, "roll": 18.0 },
         "leftLeg": { "pitch": 0.0 },
         "rightLeg": { "pitch": 0.0 }
